@@ -19,9 +19,10 @@ class Flatemate:
         self.name = name
         self.days_in_house = days_in_house
 
-    def pays(self, bill):
-        pass
-
+    def pays(self, bill,flatemate2):
+        part = self.days_in_house / (self.days_in_house + flatemate2.days_in_house)
+        to_pay = bill.amount * part
+        return to_pay
 
 class PdfReport:
     """
@@ -35,4 +36,3 @@ class PdfReport:
 
     def generate(self,flatmate1,flatemate2, bill):
         pass
-        
