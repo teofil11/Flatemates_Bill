@@ -63,3 +63,22 @@ class PdfReport:
 
         pdf.output(self.filename)
         webbrowser.open(self.filename)
+
+def main():
+    amount = float(input('Enter the bill amount: '))
+    period = input('What is the bill period?E.g May 2023: ')
+    name1 = input('What is your name?: ')
+    days_in_house1 = float(input(f'How many days did {name1} in the house during the bill period?: '))
+    name2 = input('What is name of the other flatmate?: ')
+    days_in_house2 = float(input(f'How many days did {name2} in the house during the bill period?: '))
+
+    the_bill = Bill(amount= amount, period= period)
+    flatmate1 = Flatemate(name=name1, days_in_house=days_in_house1)
+    flatmate2 = Flatemate(name=name2, days_in_house= days_in_house2)
+    pdf = PdfReport(f'{period}.pdf')
+    pdf.generate(flatmate1, flatmate2, the_bill)
+
+main()
+
+
+
